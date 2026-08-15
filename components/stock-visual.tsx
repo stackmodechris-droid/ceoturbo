@@ -11,7 +11,11 @@ export function StockVisual({
   className?: string;
 }) {
   const isFeature = className.includes("stock-visual--feature");
-  const sizes = isFeature
+  const isMetaHero = className.includes("stock-visual--meta-hero");
+  const isHighFidelity = isFeature || className.includes("stock-visual--hd");
+  const sizes = isMetaHero
+    ? "(max-width: 700px) 72vw, (max-width: 1100px) 320px, 360px"
+    : isFeature
     ? "(max-width: 820px) calc(100vw - 28px), (max-width: 1200px) 92vw, 960px"
     : "(max-width: 820px) 92vw, (max-width: 1200px) 52vw, 560px";
 
@@ -24,7 +28,7 @@ export function StockVisual({
           width={image.width}
           height={image.height}
           sizes={sizes}
-          quality={isFeature ? 88 : undefined}
+          quality={isHighFidelity ? 88 : undefined}
           priority={priority}
         />
       </div>

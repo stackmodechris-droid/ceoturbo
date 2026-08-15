@@ -15,8 +15,8 @@ export function ResultInsights({ results, limit }: { results: ResultAsset[]; lim
           rel="noreferrer"
           className="result-row"
           key={result.src}
-          initial={{ opacity: 0, x: -18 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: Math.min(index * 0.07, 0.3) }}
         >
