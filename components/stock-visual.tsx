@@ -10,6 +10,11 @@ export function StockVisual({
   priority?: boolean;
   className?: string;
 }) {
+  const isFeature = className.includes("stock-visual--feature");
+  const sizes = isFeature
+    ? "(max-width: 820px) calc(100vw - 28px), (max-width: 1200px) 92vw, 960px"
+    : "(max-width: 820px) 92vw, (max-width: 1200px) 52vw, 560px";
+
   return (
     <figure className={`stock-visual stock-visual--${image.kind}${className ? ` ${className}` : ""}`}>
       <div className="stock-visual__stage" style={{ aspectRatio: `${image.width}/${image.height}` }}>
@@ -18,7 +23,8 @@ export function StockVisual({
           alt={image.alt}
           width={image.width}
           height={image.height}
-          sizes="(max-width: 820px) 92vw, (max-width: 1200px) 52vw, 560px"
+          sizes={sizes}
+          quality={isFeature ? 88 : undefined}
           priority={priority}
         />
       </div>
